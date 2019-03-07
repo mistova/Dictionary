@@ -86,6 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         builder.setTitle("DİKKAT");
         builder.setMessage(mesaj);
         builder.setNegativeButton("TAMAM", null);
-        builder.show();
+        builder.show();//show//
     }
 }
