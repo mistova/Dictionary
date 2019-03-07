@@ -1,5 +1,4 @@
 package com.work.dictionary;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
@@ -34,25 +32,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if(v == loginBtn){
             String userName = userNameEt.getText().toString().trim();
-            userControl(userName/*,pw*/);
+            userControl(userName);
         }
     }
-    private void userControl(final String userName) {
-        if(userName.isEmpty()){
-            dialogAc("Please fill it!");
-            return;
+    private void userControl(final String word) {
+        if(word.isEmpty()){
+            Toast.makeText(this, "Please fill it!", Toast.LENGTH_SHORT).show();
         }
         else{
             AndroidNetworking.post("http://bilimtadinda.com/cankasoft/aranacak_kelime/servis.php")
-                    .addBodyParameter("userName", userName)
+                    .addBodyParameter("userName", word)
                     .setPriority(Priority.MEDIUM)
                     .build()
                     .getAsString(new StringRequestListener() {
                         @Override
                         public void onResponse(String  response) {
                             Log.i("LoginActivity",response);
-                            cevapaBak(response,userName);
-                            Toast.makeText(LoginActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                            cevapaBak(response);
                         }
                         @Override
                         public void onError(ANError error) {
@@ -61,31 +57,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     });
         }
     }
-    private void cevapaBak(String response,String userName) {
+    private void cevapaBak(String response) {
         Gson gson = new Gson();
         ResponseModel responseModel = gson.fromJson(response,ResponseModel.class);
 
         if(responseModel.getSonuc() == 1){
 
             Bundle bundle = new Bundle();
-            bundle.putString("kullaniciAdi",responseModel.getMesaj());
-            //bundle.putLong("loginTarihi",System.currentTimeMillis());
+            bundle.putString("word",responseModel.getMesaj());
 
             Intent intent = new Intent(this,MainActivity.class);
             intent.putExtras(bundle);
-            //intent.putExtra("kullaniciAdi",userName); bu sekilde de data yollanabilr
             startActivity(intent);
         }
         else{
-            dialogAc("Giriş Başarısız!");
+            Toast.makeText(this, "\"Failed\"", Toast.LENGTH_SHORT).show();
             finish();
         }
-    }
-    private void dialogAc(String mesaj) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("DİKKAT");
-        builder.setMessage(mesaj);
-        builder.setNegativeButton("TAMAM", null);
-        builder.show();//show//
     }
 }
