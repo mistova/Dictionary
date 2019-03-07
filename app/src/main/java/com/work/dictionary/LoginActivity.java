@@ -1,6 +1,4 @@
 package com.work.dictionary;
-
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +16,6 @@ import com.androidnetworking.interfaces.StringRequestListener;
 import com.google.gson.Gson;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
-    // private EditText pwEt;
     private EditText userNameEt;
     private Button loginBtn;
 
@@ -30,7 +26,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         init();
     }
     private void init() {
-        // pwEt = findViewById(R.id.kullanici_pw_et_id);
         userNameEt = findViewById(R.id.kullanici_adi_et_id);
         loginBtn = findViewById(R.id.login_btn_id);
         loginBtn.setOnClickListener(this);
@@ -39,22 +34,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if(v == loginBtn){
             String userName = userNameEt.getText().toString().trim();
-            // String pw = pwEt.getText().toString().trim();
             userControl(userName/*,pw*/);
         }
     }
-    private void userControl(final String userName/*, String pw*/) {
-        if(userName.isEmpty()/* || pw.isEmpty()*/){
-            dialogAc("Kullanıcı adı veya parola boş olamaz!");
+    private void userControl(final String userName) {
+        if(userName.isEmpty()){
+            dialogAc("Please fill it!");
             return;
-        }
-        else if(userName.length() < 5/* || pw.length() < 5*/){
-            dialogAc("Girilen değerler çok kısa!");
         }
         else{
             AndroidNetworking.post("http://bilimtadinda.com/cankasoft/aranacak_kelime/servis.php")
                     .addBodyParameter("userName", userName)
-                    //.addBodyParameter("pw", pw)
                     .setPriority(Priority.MEDIUM)
                     .build()
                     .getAsString(new StringRequestListener() {
@@ -66,7 +56,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                         @Override
                         public void onError(ANError error) {
-                            // handle error
                             Log.e("LoginActivity",error.getMessage());
                         }
                     });
