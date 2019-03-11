@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle bundle     = getIntent().getExtras();
 
-
-
         if(bundle != null){
             ulkeler[0] = bundle.getString("msg1");
             ulkeler[1] = bundle.getString("msg2");

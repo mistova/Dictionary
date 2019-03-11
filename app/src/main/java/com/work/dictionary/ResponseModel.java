@@ -10,7 +10,6 @@ public class ResponseModel {
     @SerializedName("msg1")
     private String msg1;
 
-    @SerializedName("msg2")
     private String msg2;
 
     @SerializedName("msg3")
@@ -19,8 +18,8 @@ public class ResponseModel {
     public ResponseModel(int sonuc, String msg1, String msg2, String msg3) {
         this.sonuc = sonuc;
         this.msg1 = msg1;
-        this.msg1 = msg2;
-        this.msg1 = msg3;
+        this.msg2 = msg2;
+        this.msg3 = msg3;
     }
 
     public int getSonuc() {
