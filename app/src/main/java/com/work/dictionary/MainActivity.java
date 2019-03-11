@@ -6,12 +6,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
-    private String[] ulkeler = new String[3];
-
-    private String words     = new String();
+    private String[] str = new String[3];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
 
@@ -22,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle     = getIntent().getExtras();
 
         if(bundle != null){
-            ulkeler[0] = bundle.getString("msg1");
-            ulkeler[1] = bundle.getString("msg2");
-            ulkeler[2] = bundle.getString("msg3");
+            str[0] = bundle.getString("msg1");
+            str[1] = bundle.getString("msg2");
+            str[2] = bundle.getString("msg3");
         }
         ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, android.R.id.text1, ulkeler);
+                (this, android.R.layout.simple_list_item_1, android.R.id.text1, str);
         listemiz.setAdapter(veriAdaptoru);
 
 
