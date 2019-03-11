@@ -63,8 +63,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(responseModel.getSonuc() == 1){
 
-            Bundle bundle = new Bundle();
-            bundle.putString("word",responseModel.getMesaj());
+            Bundle bundle;
+            bundle = responseModel.getMesaj();
 
             Intent intent = new Intent(this,MainActivity.class);
             intent.putExtras(bundle);

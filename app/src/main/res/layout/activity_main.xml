@@ -9,12 +9,12 @@
     android:background="@drawable/ana_ekran_gradient"
     tools:context=".MainActivity">
 
-    <TextView
+    <ListView
         android:gravity="center"
         android:text="Kullanıcı Bilgileri"
         android:textStyle="bold"
-        android:layout_marginTop="250dp"
-        android:id="@+id/kullanici_tv_id"
+        android:layout_marginTop="150dp"
+        android:id="@+id/listView1"
         android:textSize="@dimen/tv_text_size"
         android:textColor="@android:color/white"
         android:layout_width="match_parent"

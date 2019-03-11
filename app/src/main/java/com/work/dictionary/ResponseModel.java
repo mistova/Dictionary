@@ -1,31 +1,37 @@
 package com.work.dictionary;
 
+import android.os.Bundle;
+
 import com.google.gson.annotations.SerializedName;
 
 public class ResponseModel {
 
     private int sonuc;
-    @SerializedName("msg")
-    private String mesaj;
+    @SerializedName("msg1")
+    private String msg1;
 
-    public ResponseModel(int sonuc, String mesaj) {
+    @SerializedName("msg2")
+    private String msg2;
+
+    @SerializedName("msg3")
+    private String msg3;
+
+    public ResponseModel(int sonuc, String msg1, String msg2, String msg3) {
         this.sonuc = sonuc;
-        this.mesaj = mesaj;
+        this.msg1 = msg1;
+        this.msg1 = msg2;
+        this.msg1 = msg3;
     }
 
     public int getSonuc() {
         return sonuc;
     }
 
-    public void setSonuc(int sonuc) {
-        this.sonuc = sonuc;
-    }
-
-    public String getMesaj() {
-        return mesaj;
-    }
-
-    public void setMesaj(String mesaj) {
-        this.mesaj = mesaj;
+    public Bundle getMesaj() {
+        Bundle bundle = new Bundle();
+        bundle.putString("msg1",msg1);
+        bundle.putString("msg2",msg2);
+        bundle.putString("msg3",msg3);
+        return bundle;
     }
 }

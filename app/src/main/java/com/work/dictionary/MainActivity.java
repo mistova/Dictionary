@@ -2,33 +2,36 @@ package com.work.dictionary;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.work.dictionary.R;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
+    private String[] ulkeler = new String[3];
 
-    private TextView kullaniciBilgileriTv;
-
-    private String kullaniciAdi;
-
-    private LinearLayout linearLayout;
-
+    private String words     = new String();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        linearLayout = findViewById(R.id.linear_layout);
-        kullaniciBilgileriTv = findViewById(R.id.kullanici_tv_id);
-        Bundle bundle = getIntent().getExtras();
+
+        ListView listemiz =(ListView) findViewById(R.id.listView1);
+
+        Bundle bundle     = getIntent().getExtras();
+
+
+
         if(bundle != null){
-            kullaniciAdi = bundle.getString("word");
-            kullaniciBilgileriTv.setText(kullaniciAdi);
+            ulkeler[0] = bundle.getString("msg1");
+            ulkeler[1] = bundle.getString("msg2");
+            ulkeler[2] = bundle.getString("msg3");
         }
+        ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, android.R.id.text1, ulkeler);
+        listemiz.setAdapter(veriAdaptoru);
+
+
     }
 }
