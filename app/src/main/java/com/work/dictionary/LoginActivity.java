@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         else{
             AndroidNetworking.post("http://bilimtadinda.com/cankasoft/aranacak_kelime/servis.php")
-                    .addBodyParameter("userName", word)
+                    .addBodyParameter("word", word)
                     .setPriority(Priority.MEDIUM)
                     .build()
                     .getAsString(new StringRequestListener() {
