@@ -13,7 +13,7 @@
         android:theme="@style/OzelActionBarTemasi">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/LoginTheme">
+            android:theme="@style/OzelActionBarTemasi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

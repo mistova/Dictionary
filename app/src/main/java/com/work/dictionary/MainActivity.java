@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        ListView listemiz =(ListView) findViewById(R.id.listView1);
+        ListView listemiz = findViewById(R.id.listView1);
 
         Bundle bundle     = getIntent().getExtras();
 

@@ -1,11 +1,13 @@
-package com.work.dictionary;
-import android.content.Intent;
+package com.work.dictionary;/*
+import android.content.Intent;*/
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -16,6 +18,8 @@ import com.google.gson.Gson;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText userNameEt;
     private Button loginBtn;
+    private String[] str = new String[3];
+    ListView listemiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userNameEt = findViewById(R.id.kullanici_adi_et_id);
         loginBtn = findViewById(R.id.login_btn_id);
         loginBtn.setOnClickListener(this);
+        listemiz = findViewById(R.id.listView1);
+        str[0] = "";
+        str[1] = "";
+        str[2] = "";
     }
     @Override
     public void onClick(View v) {
@@ -65,10 +73,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             Bundle bundle;
             bundle = responseModel.getMesaj();
-
+            if(bundle != null){
+                str[0] = bundle.getString("msg1");
+                str[1] = bundle.getString("msg2");
+                str[2] = bundle.getString("msg3");
+            }
+            ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>
+                    (this, android.R.layout.simple_list_item_1, android.R.id.text1, str);
+            listemiz.setAdapter(veriAdaptoru);
+/*
             Intent intent = new Intent(this,MainActivity.class);
             intent.putExtras(bundle);
-            startActivity(intent);
+            startActivity(intent);*/
         }
         else{
             Toast.makeText(this, "\"Failed\"", Toast.LENGTH_SHORT).show();
