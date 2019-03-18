@@ -18,5 +18,15 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="OzelActionBarTemasi"
+        parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/OzelActionBarStili</item>
+        <item name="actionBarStyle">@style/OzelActionBarStili</item>
+    </style>
+    <style name="OzelActionBarStili"
+        parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/top_window</item>
+        <item name="background">@drawable/top_window</item>
+    </style>
 
 </resources>
