@@ -1,5 +1,4 @@
-package com.work.dictionary;/*
-import android.content.Intent;*/
+package com.work.dictionary;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -81,10 +80,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>
                     (this, android.R.layout.simple_list_item_1, android.R.id.text1, str);
             listemiz.setAdapter(veriAdaptoru);
-/*
-            Intent intent = new Intent(this,MainActivity.class);
-            intent.putExtras(bundle);
-            startActivity(intent);*/
         }
         else{
             Toast.makeText(this, "\"Failed\"", Toast.LENGTH_SHORT).show();
