@@ -77,8 +77,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 str[1] = bundle.getString("msg2");
                 str[2] = bundle.getString("msg3");
             }
-            ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>
-                    (this, android.R.layout.simple_list_item_1, android.R.id.text1, str);
+            ArrayAdapter<String> veriAdaptoru = new ArrayAdapter<String>
+                    (this, android.R.layout.simple_list_item_1, str);
             listemiz.setAdapter(veriAdaptoru);
         }
         else{
